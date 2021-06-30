@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.Dao.DaoDate;
 import com.app.Dao.DaoMajourne;
+import com.app.Dao.DaoPosition;
 import com.app.Dao.DaoSoldeDebuter;
 import com.app.Dao.DaoTransaction;
 import com.app.Dao.DaoUser;
@@ -19,6 +20,7 @@ import com.app.metier.IService.IService;
 import com.app.metier.entities.Connexion;
 import com.app.metier.entities.Dates;
 import com.app.metier.entities.Majournee;
+import com.app.metier.entities.Position;
 import com.app.metier.entities.SoldeDebuterJournee;
 import com.app.metier.entities.Transaction;
 import com.app.metier.entities.Utilisateur;
@@ -30,6 +32,8 @@ public class RestService  implements IService {
 	private SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
     @Autowired
     private DaoUser userRepository;
+    @Autowired
+    private DaoPosition positionRepository;
     @Autowired
     private DaoDate dateRepository;
     @Autowired
@@ -670,7 +674,16 @@ public class RestService  implements IService {
      }
    
     public double cloturer(  int id, double con){	
-    	
+    	Position position = new Position();
+    	position.setSommeInitiale(sommeInitiale(id));
+    	position.setDate(formater.format(aujourdhui));
+    	position.setEntree(totalEntree(id));
+    	position.setSortie(totalSortie(id));
+    	position.setSoldeCaisse(getSoldeDebuterJournees(id).get(0).getCaisse());
+    	position.setSommeFinale(sommeFinale(id));
+    	position.setSoldeJournal(1000);
+    	position.setStatus(false);
+		positionRepository.save(position);
     	SoldeDebuterJournee solde =soldeDebuterJourneeRepository.findByIdUAndStatus(id,1).get(0);
     	Majournee solde1 =maJourneeRepository.findByIdUAndStatus(id,1).get(0);
         solde.setCloturer(con);
@@ -1475,6 +1488,27 @@ public class RestService  implements IService {
 			 } 
 		return solde;
 	}
-	
+	@Override
+	public Position createPosition(Position position) {
+		return positionRepository.save(position);
+	}
+
+	@Override
+	public List<Position> getPositionsByStatus(boolean status) {
+		// TODO Auto-generated method stub
+		return positionRepository.findByStatus(status);
+	}
+
+	@Override
+	public List<Position> getPositionByIdU(int id) {
+		// TODO Auto-generated method stub
+		return positionRepository.findByIdU(id);
+	}
+
+	@Override
+	public List<Position> getPositionByIdUAndStatus(int id, boolean status) {
+		// TODO Auto-generated method stub
+		return positionRepository.findByIdUAndStatus(id, status);
+	}
 
 }

@@ -18,6 +18,7 @@ import com.app.metier.Service.RestService;
 import com.app.metier.entities.Connexion;
 import com.app.metier.entities.Dates;
 import com.app.metier.entities.Majournee;
+import com.app.metier.entities.Position;
 import com.app.metier.entities.SoldeDebuterJournee;
 import com.app.metier.entities.Transaction;
 import com.app.metier.entities.Utilisateur;
@@ -29,7 +30,18 @@ import com.app.metier.entities.history;
 public class RestControleur {
     @Autowired(required=true)
     private RestService service;
-   
+    @GetMapping("/position/status/{status}")
+    public List<Position> position(@PathVariable(value="status") boolean status){
+    	return service.getPositionsByStatus(status);
+     }
+    @GetMapping("/position/id/{id}")
+    public  List<Position> position(@PathVariable(value="id") int id){
+    	return service.getPositionByIdU(id);
+     }
+    @GetMapping("/position/{id}/{status}")
+    public  List<Position> position(@PathVariable(value="id") int id,@PathVariable(value="status") boolean status){
+    	return service.getPositionByIdUAndStatus(id, status);
+     }
 	@GetMapping("/dates")
     public List<Dates> listeDate() {
 		return service.getAllDates();
