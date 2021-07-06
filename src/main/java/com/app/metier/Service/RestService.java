@@ -1502,13 +1502,13 @@ public class RestService  implements IService {
 	@Override
 	public List<Position> getPositionByIdU(int id) {
 		// TODO Auto-generated method stub
-		return positionRepository.findByIdU(id);
+		return positionRepository.findById(id);
 	}
 
 	@Override
-	public List<Position> getPositionByIdUAndStatus(int id, boolean status) {
+	public List<Position> getPositionByDate(String date) {
 		// TODO Auto-generated method stub
-		return positionRepository.findByIdUAndStatus(id, status);
+		return positionRepository.findByDate(date);
 	}
 
 }

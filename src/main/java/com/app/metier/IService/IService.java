@@ -16,10 +16,10 @@ import com.app.metier.entities.history;
 @Component
 public interface IService {
 	//PARTIE POSITION
-	public   List<Position> getPositionsByStatus(boolean status);
+	public List<Position> getPositionByDate(String status);
+	public List<Position> getPositionsByStatus(boolean status);
 	public Position createPosition(Position position);
 	List<Position> getPositionByIdU(int id);
-	List<Position> getPositionByIdUAndStatus(int id,boolean status);
 	//PARTIE CAISSIER-CLIENT
     //PARTIE CAISSIER-CLIENT
     public List<Dates> getAllDates();

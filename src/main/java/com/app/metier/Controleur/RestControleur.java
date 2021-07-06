@@ -38,9 +38,9 @@ public class RestControleur {
     public  List<Position> position(@PathVariable(value="id") int id){
     	return service.getPositionByIdU(id);
      }
-    @GetMapping("/position/{id}/{status}")
-    public  List<Position> position(@PathVariable(value="id") int id,@PathVariable(value="status") boolean status){
-    	return service.getPositionByIdUAndStatus(id, status);
+    @PostMapping("/position/rechercher/date")
+    public  List<Position> position( @RequestBody history user){
+    	return service.getPositionByDate(user.getDate());
      }
 	@GetMapping("/dates")
     public List<Dates> listeDate() {
