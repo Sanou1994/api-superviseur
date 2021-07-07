@@ -1502,7 +1502,7 @@ public class RestService  implements IService {
 	@Override
 	public List<Position> getPositionByIdU(int id) {
 		// TODO Auto-generated method stub
-		return positionRepository.findById(id);
+		return positionRepository.findByIdU(id);
 	}
 
 	@Override
