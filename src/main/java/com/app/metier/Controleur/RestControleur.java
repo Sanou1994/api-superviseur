@@ -31,7 +31,10 @@ import com.app.metier.entities.history;
 public class RestControleur {
     @Autowired(required=true)
     private RestService service;
-    
+    @PutMapping("/position/modifier/{id}/{status}")
+    public Position modifierPosition(@PathVariable(value = "id") int idU,@PathVariable(value = "status") boolean status) {
+        return service.updatePosition(idU, status);
+    }
     @PostMapping("/position/rechercher/id/date")
     public  List<Position> positions( @RequestBody PositionPost position){
     	return service.getPositionByIdUAndDate(position.getIdU(),position.getDate());

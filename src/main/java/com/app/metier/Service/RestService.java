@@ -80,8 +80,13 @@ public class RestService  implements IService {
     	
         return userRepository.save(user);
     }
-    
-    
+
+    public Position updatePosition(int idU,boolean status){
+    	Position user = positionRepository.findById(idU);
+    	         user.setStatus(status);  
+    	         Position updatedUser = positionRepository.save(user);
+             return updatedUser;
+    }    
     public Utilisateur updateUser( int userId,  Utilisateur userDetails){
     	Utilisateur user = userRepository.findById(userId);
     	user.setNom(userDetails.getNom());

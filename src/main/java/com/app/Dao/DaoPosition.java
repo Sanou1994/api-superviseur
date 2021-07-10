@@ -8,5 +8,6 @@ import com.app.metier.entities.Position;
 
 public interface DaoPosition extends JpaRepository<Position,Integer>{
 	List<Position> findByStatus(boolean status);
+	Position findById(int id);
 	List<Position> findByIdUAndDate(int idU,String date);
 }

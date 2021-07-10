@@ -19,6 +19,7 @@ public interface IService {
 	public List<Position> getPositionByIdUAndDate(int id,String date);
 	public List<Position> getPositionByStatus(boolean status);
 	public Position createPosition(Position position);
+	public Position updatePosition(int idU,boolean status);
     //PARTIE CAISSIER-CLIENT
     public List<Dates> getAllDates();
 	public void jour();
