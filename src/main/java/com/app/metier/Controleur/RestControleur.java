@@ -24,7 +24,6 @@ import com.app.metier.entities.SoldeDebuterJournee;
 import com.app.metier.entities.Transaction;
 import com.app.metier.entities.Utilisateur;
 import com.app.metier.entities.history;
-
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api")
@@ -40,7 +39,7 @@ public class RestControleur {
     	return service.getPositionByIdUAndDate(position.getIdU(),position.getDate());
      }
     @GetMapping("/position/rechercher/status/{status}")
-    public  List<Position> position(@PathVariable(value = "id") boolean userId){
+    public  List<Position> position(@PathVariable(value = "status") boolean userId){
     	return service.getPositionByStatus(userId);
      }
 	@GetMapping("/dates")
