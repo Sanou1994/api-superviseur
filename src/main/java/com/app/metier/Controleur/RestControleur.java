@@ -31,21 +31,13 @@ import com.app.metier.entities.history;
 public class RestControleur {
     @Autowired(required=true)
     private RestService service;
-    @PostMapping("/positions")
+    @PostMapping("/position/rechercher/status/{status}/date/{date}")
     public  List<Position> positions( @RequestBody PositionPost position){
-    	return service.getPositionByIdUOrStatusOrDate(position.getIdU(), position.getStatus(), position.getDate());
+    	return service.getPositionByIdUAndDate(position.getIdU(),position.getDate());
      }
-    @GetMapping("/position/status/{status}")
-    public List<Position> position(@PathVariable(value="status") boolean status){
-    	return service.getPositionsByStatus(status);
-     }
-    @GetMapping("/position/id/{id}")
-    public  List<Position> position(@PathVariable(value="id") int id){
-    	return service.getPositionByIdU(id);
-     }
-    @PostMapping("/position/rechercher/date")
-    public  List<Position> position( @RequestBody history user){
-    	return service.getPositionByDate(user.getDate());
+    @GetMapping("/position/rechercher/status/{status}")
+    public  List<Position> position(@PathVariable(value = "id") boolean userId){
+    	return service.getPositionByStatus(userId);
      }
 	@GetMapping("/dates")
     public List<Dates> listeDate() {

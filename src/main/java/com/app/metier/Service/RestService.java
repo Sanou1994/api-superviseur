@@ -1495,27 +1495,15 @@ public class RestService  implements IService {
 	}
 
 	@Override
-	public List<Position> getPositionsByStatus(boolean status) {
+	public List<Position> getPositionByStatus(boolean status) {
 		// TODO Auto-generated method stub
 		return positionRepository.findByStatus(status);
 	}
 
 	@Override
-	public List<Position> getPositionByIdU(int id) {
+	public List<Position> getPositionByIdUAndDate(int id,String date) {
 		// TODO Auto-generated method stub
-		return positionRepository.findByIdU(id);
-	}
-
-	@Override
-	public List<Position> getPositionByDate(String date) {
-		// TODO Auto-generated method stub
-		return positionRepository.findByDate(date);
-	}
-
-	@Override
-	public List<Position> getPositionByIdUOrStatusOrDate(int id, boolean status, String date) {
-		// TODO Auto-generated method stub
-		return positionRepository.findByIdUOrStatusOrDate(id, status, date);
+		return positionRepository.findByIdUAndDate(id, date);
 	}
 
 }

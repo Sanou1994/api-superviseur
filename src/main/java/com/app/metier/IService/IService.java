@@ -16,12 +16,9 @@ import com.app.metier.entities.history;
 @Component
 public interface IService {
 	//PARTIE POSITION
-	public List<Position> getPositionByIdUOrStatusOrDate(int id,boolean status,String date);
-	public List<Position> getPositionByDate(String status);
-	public List<Position> getPositionsByStatus(boolean status);
+	public List<Position> getPositionByIdUAndDate(int id,String date);
+	public List<Position> getPositionByStatus(boolean status);
 	public Position createPosition(Position position);
-	List<Position> getPositionByIdU(int id);
-	//PARTIE CAISSIER-CLIENT
     //PARTIE CAISSIER-CLIENT
     public List<Dates> getAllDates();
 	public void jour();
