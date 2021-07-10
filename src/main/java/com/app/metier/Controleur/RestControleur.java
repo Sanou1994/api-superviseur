@@ -19,6 +19,7 @@ import com.app.metier.entities.Connexion;
 import com.app.metier.entities.Dates;
 import com.app.metier.entities.Majournee;
 import com.app.metier.entities.Position;
+import com.app.metier.entities.PositionPost;
 import com.app.metier.entities.SoldeDebuterJournee;
 import com.app.metier.entities.Transaction;
 import com.app.metier.entities.Utilisateur;
@@ -30,6 +31,10 @@ import com.app.metier.entities.history;
 public class RestControleur {
     @Autowired(required=true)
     private RestService service;
+    @PostMapping("/positions")
+    public  List<Position> positions( @RequestBody PositionPost position){
+    	return service.getPositionByIdUOrStatusOrDate(position.getIdU(), position.getStatus(), position.getDate());
+     }
     @GetMapping("/position/status/{status}")
     public List<Position> position(@PathVariable(value="status") boolean status){
     	return service.getPositionsByStatus(status);

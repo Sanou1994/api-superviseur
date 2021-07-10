@@ -675,6 +675,7 @@ public class RestService  implements IService {
    
     public double cloturer(  int id, double con){	
     	Position position = new Position();
+    	position.setIdU(id);
     	position.setSommeInitiale(sommeInitiale(id));
     	position.setDate(formater.format(aujourdhui));
     	position.setEntree(totalEntree(id));
@@ -1509,6 +1510,12 @@ public class RestService  implements IService {
 	public List<Position> getPositionByDate(String date) {
 		// TODO Auto-generated method stub
 		return positionRepository.findByDate(date);
+	}
+
+	@Override
+	public List<Position> getPositionByIdUOrStatusOrDate(int id, boolean status, String date) {
+		// TODO Auto-generated method stub
+		return positionRepository.findByIdUOrStatusOrDate(id, status, date);
 	}
 
 }
