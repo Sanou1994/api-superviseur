@@ -73,6 +73,10 @@ public class RestControleur {
     }
     
     //LA PARTIE CRUD DE SOLDEDEBUTERJOURNEE  
+    @PostMapping("/soldeDebuterJournees/rechercher/id/date")
+    public  List<SoldeDebuterJournee> soldeDebuterJournees( @RequestBody PositionPost position){
+    	return service.getSoldeDebuterJourneesByIdUAndDate(position.getIdU(), position.getDate());
+     }
     @GetMapping("/soldeDebuterJournees/caissier/{idU}")
     public List<SoldeDebuterJournee> getSoldeDebuterJournees(@PathVariable(value = "idU") int userId) {
         return service.getSoldeDebuterJournees(userId);

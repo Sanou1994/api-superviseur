@@ -11,4 +11,5 @@ public interface DaoSoldeDebuter extends JpaRepository<SoldeDebuterJournee,Integ
 	SoldeDebuterJournee findByIdU(int id);
 	SoldeDebuterJournee findById(int userId);
 	List<SoldeDebuterJournee> findByIdUAndStatus(int userId,int idU);
+	List<SoldeDebuterJournee> findByIdUAndDate(int id,String date);
 }

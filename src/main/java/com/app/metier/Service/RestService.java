@@ -115,8 +115,6 @@ public class RestService  implements IService {
     public List<SoldeDebuterJournee>getSoldeDebuterJournees( int userId) {
         return soldeDebuterJourneeRepository.findByIdUAndStatus(userId,1);
     }
-
-
    
     public List<SoldeDebuterJournee>getAllSoldeDebuterJournees() {
         return soldeDebuterJourneeRepository.findAll();
@@ -1509,6 +1507,12 @@ public class RestService  implements IService {
 	public List<Position> getPositionByIdUAndDate(int id,String date) {
 		// TODO Auto-generated method stub
 		return positionRepository.findByIdUAndDate(id, date);
+	}
+
+	@Override
+	public List<SoldeDebuterJournee> getSoldeDebuterJourneesByIdUAndDate(int id, String date) {
+		// TODO Auto-generated method stub
+		return soldeDebuterJourneeRepository.findByIdUAndDate(id, date);
 	}
 
 }

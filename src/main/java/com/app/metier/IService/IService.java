@@ -29,6 +29,7 @@ public interface IService {
     public Utilisateur updateUser( int userId,  Utilisateur userDetails);
     public Map<String, Boolean> deleteUser( int userId) ;
     public List<SoldeDebuterJournee>getSoldeDebuterJournees( int userId) ;
+    public List<SoldeDebuterJournee>getSoldeDebuterJourneesByIdUAndDate( int id,String date) ;
     public List<SoldeDebuterJournee>getAllSoldeDebuterJournees() ;
     public SoldeDebuterJournee getSoldeDebuterJourneesById( int userId);
     public SoldeDebuterJournee createSoldeDebuterJournee( SoldeDebuterJournee user) ;
