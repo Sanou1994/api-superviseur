@@ -183,6 +183,11 @@ public class RestControleur {
     public double totalDecaissement(@PathVariable(value="id") int id){
     	return service.totalDecaissement(id);
      }
+    
+    @PostMapping("/totalDecaissement/date/id")
+    public double totalDecaissement(@RequestBody PositionPost position){
+    	return service.totalDecaissementParIdParDate(position.getIdU(), position.getDate());
+     }
     @GetMapping("/totalEncaissement/{id}")
     public double totalEncaissement(@PathVariable(value="id") int id){
     	return service.totalEncaissement(id);

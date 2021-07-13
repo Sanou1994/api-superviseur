@@ -774,6 +774,24 @@ public class RestService  implements IService {
 		}
     	return somme;
      }
+    
+    public double totalDecaissementParIdParDate( int id,String date){
+    	double somme=0;
+    	List<Transaction> listeParDate = new ArrayList<Transaction>();
+    	List<Transaction>listes = listeTansactionParCassier(id);
+    	for (Transaction transaction : listes) {
+			if(transaction.getDate().equals(date)) {
+				listeParDate.add(transaction);		
+			}
+		}
+    	
+    	for (Transaction transaction : listeParDate) {
+			somme = somme +transaction.getDecaissement();
+		}
+    	
+    	
+    	return somme;
+     }
    
     public double totalEncaissement( int id){
     	double somme=0;
