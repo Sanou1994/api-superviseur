@@ -775,23 +775,58 @@ public class RestService  implements IService {
     	return somme;
      }
     
-    public double totalDecaissementParIdParDate( int id,String date){
-    	double somme=0;
-    	List<Transaction> listeParDate = new ArrayList<Transaction>();
-    	List<Transaction>listes = listeTansactionParCassier(id);
-    	for (Transaction transaction : listes) {
-			if(transaction.getDate().equals(date)) {
-				listeParDate.add(transaction);		
+    public  SoldeDebuterJournee totalDecaissementParIdParDate( int idU,String date){
+    List<Transaction>listes = transactionRepository.findByIdUAndDateBetween(idU,date,date);
+   
+    SoldeDebuterJournee total = new SoldeDebuterJournee();
+    for (Transaction transaction : listes) {
+
+    if(transaction.getOperation().equals("decaissement")) {
+    	switch (transaction.getOperateur()) {
+        case "Orange":    
+				total.setOrange(total.getOrange()+transaction.getDecaissement());
+				break;			
+        
+          case "Expresso":
+				total.setExpresso(total.getExpresso()+transaction.getDecaissement());
+
+				break;
+          case "Free":
+				total.setFreeMoney(total.getFreeMoney()+transaction.getDecaissement());
+
+	             break;
+          case "Wari":
+				total.setWari(total.getWari()+transaction.getDecaissement());
+
+	             break;
+          case "Wizall":
+				total.setWizall(total.getWizall()+transaction.getDecaissement());
+          	
+	              break;
+          case "Proximo":
+				total.setProximo(total.getProximo()+transaction.getDecaissement());
+
+	              break;
+          case "Xpress":
+				total.setxpress(total.getxpress()+transaction.getDecaissement());
+
+	              break;
+          case "Yup":
+				total.setYup(total.getYup()+transaction.getDecaissement());
+
+	               break;
+          case "Wave":
+				total.setWave(total.getWave()+transaction.getDecaissement());
+	               break;
+			default:
+				break;
 			}
-		}
+
     	
-    	for (Transaction transaction : listeParDate) {
-			somme = somme +transaction.getDecaissement();
-		}
-    	
-    	
-    	return somme;
      }
+    }
+    	return total;
+    }
    
     public double totalEncaissement( int id){
     	double somme=0;
