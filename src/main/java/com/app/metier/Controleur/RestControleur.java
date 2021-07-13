@@ -185,7 +185,7 @@ public class RestControleur {
      }
     
     @PostMapping("/totalDecaissement/date/id")
-    public double totalDecaissement(@RequestBody PositionPost position){
+    public SoldeDebuterJournee totalDecaissement(@RequestBody PositionPost position){
     	return service.totalDecaissementParIdParDate(position.getIdU(), position.getDate());
      }
     @GetMapping("/totalEncaissement/{id}")
