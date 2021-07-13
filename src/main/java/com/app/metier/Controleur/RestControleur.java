@@ -185,8 +185,19 @@ public class RestControleur {
      }
     
     @PostMapping("/totalDecaissement/date/id")
-    public SoldeDebuterJournee totalDecaissement(@RequestBody PositionPost position){
-    	return service.totalDecaissementParIdParDate(position.getIdU(), position.getDate());
+    public SoldeDebuterJournee totalDecaissementParIdParDate(@RequestBody PositionPost position){
+    	SoldeDebuterJournee solde =service.totalDecaissementParIdParDate(position.getIdU(), position.getDate(), position.getDate());
+    	return solde;
+     }
+    @PostMapping("/totalEncaissement/date/id")
+    public SoldeDebuterJournee totalEncaissementParIdParDate(@RequestBody PositionPost position){
+    	SoldeDebuterJournee solde =service.totalEncaissementParIdParDate(position.getIdU(), position.getDate(), position.getDate());
+    	return solde;
+     }
+    @PostMapping("/totalFrais/date/id")
+    public SoldeDebuterJournee totalFraistParIdParDate(@RequestBody PositionPost position){
+    	SoldeDebuterJournee solde =service.totalFraisParIdParDate(position.getIdU(), position.getDate(), position.getDate());
+    	return solde;
      }
     @GetMapping("/totalEncaissement/{id}")
     public double totalEncaissement(@PathVariable(value="id") int id){

@@ -775,13 +775,12 @@ public class RestService  implements IService {
     	return somme;
      }
     
-    public  SoldeDebuterJournee totalDecaissementParIdParDate( int idU,String date){
-    List<Transaction>listes = transactionRepository.findByIdUAndDateBetween(idU,date,date);
-   
+    public  SoldeDebuterJournee totalDecaissementParIdParDate( int idU,String date,String date1){
+    List<Transaction>listes = transactionRepository.findByIdUAndDateBetween(idU,date,date1);
     SoldeDebuterJournee total = new SoldeDebuterJournee();
     for (Transaction transaction : listes) {
 
-    if(transaction.getOperation().equals("decaissement")) {
+    if(transaction.getSens().equals("decaissement")) {
     	switch (transaction.getOperateur()) {
         case "Orange":    
 				total.setOrange(total.getOrange()+transaction.getDecaissement());
@@ -827,7 +826,108 @@ public class RestService  implements IService {
     }
     	return total;
     }
-   
+    public  SoldeDebuterJournee totalFraisParIdParDate( int idU,String date,String date1){
+        List<Transaction>listes = transactionRepository.findByIdUAndDateBetween(idU,date,date1);
+        SoldeDebuterJournee total = new SoldeDebuterJournee();
+        for (Transaction transaction : listes) {
+
+        	switch (transaction.getOperateur()) {
+            case "Orange":    
+    				total.setOrange(total.getOrange()+transaction.getFrais());
+    				break;			
+            
+              case "Expresso":
+    				total.setExpresso(total.getExpresso()+transaction.getFrais());
+
+    				break;
+              case "Free":
+    				total.setFreeMoney(total.getFreeMoney()+transaction.getFrais());
+
+    	             break;
+              case "Wari":
+    				total.setWari(total.getWari()+transaction.getFrais());
+
+    	             break;
+              case "Wizall":
+    				total.setWizall(total.getWizall()+transaction.getFrais());
+              	
+    	              break;
+              case "Proximo":
+    				total.setProximo(total.getProximo()+transaction.getFrais());
+
+    	              break;
+              case "Xpress":
+    				total.setxpress(total.getxpress()+transaction.getFrais());
+
+    	              break;
+              case "Yup":
+    				total.setYup(total.getYup()+transaction.getFrais());
+
+    	               break;
+              case "Wave":
+    				total.setWave(total.getWave()+transaction.getFrais());
+    	               break;
+    			default:
+    				break;
+    			}
+
+        }
+        	return total;
+        }
+    
+    
+    public  SoldeDebuterJournee totalEncaissementParIdParDate( int idU,String date,String date1){
+        List<Transaction>listes = transactionRepository.findByIdUAndDateBetween(idU,date,date1);
+        SoldeDebuterJournee total = new SoldeDebuterJournee();
+        for (Transaction transaction : listes) {
+
+        if(transaction.getSens().equals("encaissement")) {
+        	switch (transaction.getOperateur()) {
+            case "Orange":    
+    				total.setOrange(total.getOrange()+transaction.getEncaissement());
+    				break;			
+            
+              case "Expresso":
+    				total.setExpresso(total.getExpresso()+transaction.getEncaissement());
+
+    				break;
+              case "Free":
+    				total.setFreeMoney(total.getFreeMoney()+transaction.getEncaissement());
+
+    	             break;
+              case "Wari":
+    				total.setWari(total.getWari()+transaction.getEncaissement());
+
+    	             break;
+              case "Wizall":
+    				total.setWizall(total.getWizall()+transaction.getEncaissement());
+              	
+    	              break;
+              case "Proximo":
+    				total.setProximo(total.getProximo()+transaction.getEncaissement());
+
+    	              break;
+              case "Xpress":
+    				total.setxpress(total.getxpress()+transaction.getEncaissement());
+
+    	              break;
+              case "Yup":
+    				total.setYup(total.getYup()+transaction.getEncaissement());
+
+    	               break;
+              case "Wave":
+    				total.setWave(total.getWave()+transaction.getEncaissement());
+    	               break;
+    			default:
+    				break;
+    			}
+
+        	
+         }
+        }
+        	return total;
+        }
+
     public double totalEncaissement( int id){
     	double somme=0;
     	List<Transaction>listes = listeTansactionParCassier(id);
