@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
-@Table(name="soldereel")
+@Table(name="solde")
 @EntityListeners(AuditingEntityListener.class)
 public class SoldeReel implements Serializable{
 	private static final long serialVersionUID = 1L;
