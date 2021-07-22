@@ -49,25 +49,25 @@ public class RestControleur {
 	}
 //LA PARTIE CRUD DE SOLDEREEL   
     
-    @GetMapping("/soldeReels")
+    @GetMapping("/soldereels")
     public List<SoldeReel> listeSoldeReels() {
         return service.getAllSoldeReels();
     }
-    @GetMapping("/soldeReel/{id}")
+    @GetMapping("/soldereel/{id}")
     public SoldeReel getSoldeReelById(@PathVariable(value = "id") int userId) {   
         return service.getSoldeReelById(userId);
     }
     
-    @PostMapping("/soldeReels/ajouter")
+    @PostMapping("/soldereels/ajouter")
     public SoldeReel createSoldeReel( @RequestBody SoldeReel user) {
         return service.createSoldeReelJournee(user);
     }
     
-    @PutMapping("/soldeReels/modifier/{id}")
+    @PutMapping("/soldereels/modifier/{id}")
     public SoldeReel updateSoldeReel( @PathVariable(value = "id") int userId, @RequestBody SoldeReel userDetails) {
         return service.updateSoldeReelJournee(userId, userDetails);
     }
-    @DeleteMapping("/soldeReels/supprimer/{id}")
+    @DeleteMapping("/soldereels/supprimer/{id}")
     public Map<String, Boolean> deleteSoldeReel(@PathVariable(value = "id") int userId) {
         return service.deleteSoldeSoldeReel(userId);
     }
