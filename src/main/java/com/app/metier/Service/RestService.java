@@ -14,6 +14,7 @@ import com.app.Dao.DaoDate;
 import com.app.Dao.DaoMajourne;
 import com.app.Dao.DaoPosition;
 import com.app.Dao.DaoSoldeDebuter;
+import com.app.Dao.DaoSoleReel;
 import com.app.Dao.DaoTransaction;
 import com.app.Dao.DaoUser;
 import com.app.metier.IService.IService;
@@ -22,6 +23,7 @@ import com.app.metier.entities.Dates;
 import com.app.metier.entities.Majournee;
 import com.app.metier.entities.Position;
 import com.app.metier.entities.SoldeDebuterJournee;
+import com.app.metier.entities.SoldeReel;
 import com.app.metier.entities.Transaction;
 import com.app.metier.entities.Utilisateur;
 import com.app.metier.entities.history;
@@ -40,6 +42,8 @@ public class RestService  implements IService {
     private DaoTransaction transactionRepository;
     @Autowired
     private DaoSoldeDebuter soldeDebuterJourneeRepository;
+    @Autowired
+    private DaoSoleReel soldeReelRepository;
     
     @Autowired
     private DaoMajourne maJourneeRepository;
@@ -1666,6 +1670,36 @@ public class RestService  implements IService {
 	public List<SoldeDebuterJournee> getSoldeDebuterJourneesByIdUAndDate(int id, String date) {
 		// TODO Auto-generated method stub
 		return soldeDebuterJourneeRepository.findByIdUAndDate(id, date);
+	}
+
+	@Override
+	public List<SoldeReel> getAllSoldeReels() {
+		return soldeReelRepository.findAll();
+	}
+
+	@Override
+	public SoldeReel getSoldeReelById(int userId) {
+		return soldeReelRepository.findById(userId);
+	}
+
+	@Override
+	public SoldeReel createSoldeReelJournee(SoldeReel user) {
+		return soldeReelRepository.save(user);
+	}
+
+	@Override
+	public SoldeReel updateSoldeReelJournee(int userId, SoldeReel ad) {
+		// TODO Auto-generated method stub
+		ad.setId(userId);
+		return soldeReelRepository.save(ad);
+	}
+
+	@Override
+	public Map<String, Boolean> deleteSoldeSoldeReel(int userId) {
+		soldeReelRepository.deleteById(userId);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
 	}
 
 }
