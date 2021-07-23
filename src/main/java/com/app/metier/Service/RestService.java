@@ -23,7 +23,7 @@ import com.app.metier.entities.Dates;
 import com.app.metier.entities.Majournee;
 import com.app.metier.entities.Position;
 import com.app.metier.entities.SoldeDebuterJournee;
-import com.app.metier.entities.SoldeReel;
+import com.app.metier.entities.Soldereel;
 import com.app.metier.entities.Transaction;
 import com.app.metier.entities.Utilisateur;
 import com.app.metier.entities.history;
@@ -1673,22 +1673,22 @@ public class RestService  implements IService {
 	}
 
 	@Override
-	public List<SoldeReel> getAllSoldeReels() {
+	public List<Soldereel> getAllSoldeReels() {
 		return soldeReelRepository.findAll();
 	}
 
 	@Override
-	public SoldeReel getSoldeReelById(int userId) {
+	public Soldereel getSoldeReelById(int userId) {
 		return soldeReelRepository.findById(userId);
 	}
 
 	@Override
-	public SoldeReel createSoldeReelJournee(SoldeReel user) {
+	public Soldereel createSoldeReelJournee(Soldereel user) {
 		return soldeReelRepository.save(user);
 	}
 
 	@Override
-	public SoldeReel updateSoldeReelJournee(int userId, SoldeReel ad) {
+	public Soldereel updateSoldeReelJournee(int userId, Soldereel ad) {
 		// TODO Auto-generated method stub
 		ad.setId(userId);
 		return soldeReelRepository.save(ad);

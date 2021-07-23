@@ -8,13 +8,11 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
-@Table(name="solde")
 @EntityListeners(AuditingEntityListener.class)
-public class SoldeReel implements Serializable{
+public class Soldereel implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private double caisse;
 	private double orange;
@@ -36,10 +34,10 @@ public class SoldeReel implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	public SoldeReel() {
+	public Soldereel() {
 		super();
 	}
-	public SoldeReel(double caisse, double orange, double expresso, double freemoney, double wari, double wizall,
+	public Soldereel(double caisse, double orange, double expresso, double freemoney, double wari, double wizall,
 			double proximo, double xpress, double banque, double yup, double wave, double cloturer,
 			double sommeInitiale, String date, int status, int idU, int id) {
 		super();

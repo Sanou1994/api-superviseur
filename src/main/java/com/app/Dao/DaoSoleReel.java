@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.app.metier.entities.SoldeReel;
+import com.app.metier.entities.Soldereel;
 
-public interface DaoSoleReel extends JpaRepository<SoldeReel,Integer>{
-	SoldeReel findByIdU(int id);
-	SoldeReel findById(int userId);
-	List<SoldeReel> findByIdUAndStatus(int userId,int idU);
-	List<SoldeReel> findByIdUAndDate(int id,String date);
+public interface DaoSoleReel extends JpaRepository<Soldereel,Integer>{
+	Soldereel findByIdU(int id);
+	Soldereel findById(int userId);
+	List<Soldereel> findByIdUAndStatus(int userId,int idU);
+	List<Soldereel> findByIdUAndDate(int id,String date);
 }

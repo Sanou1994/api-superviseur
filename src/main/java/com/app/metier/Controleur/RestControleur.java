@@ -21,7 +21,7 @@ import com.app.metier.entities.Majournee;
 import com.app.metier.entities.Position;
 import com.app.metier.entities.PositionPost;
 import com.app.metier.entities.SoldeDebuterJournee;
-import com.app.metier.entities.SoldeReel;
+import com.app.metier.entities.Soldereel;
 import com.app.metier.entities.Transaction;
 import com.app.metier.entities.Utilisateur;
 import com.app.metier.entities.history;
@@ -50,21 +50,21 @@ public class RestControleur {
 //LA PARTIE CRUD DE SOLDEREEL   
     
     @GetMapping("/soldereels")
-    public List<SoldeReel> listeSoldeReels() {
+    public List<Soldereel> listeSoldeReels() {
         return service.getAllSoldeReels();
     }
     @GetMapping("/soldereel/{id}")
-    public SoldeReel getSoldeReelById(@PathVariable(value = "id") int userId) {   
+    public Soldereel getSoldeReelById(@PathVariable(value = "id") int userId) {   
         return service.getSoldeReelById(userId);
     }
     
     @PostMapping("/soldereels/ajouter")
-    public SoldeReel createSoldeReel( @RequestBody SoldeReel user) {
+    public Soldereel createSoldeReel( @RequestBody Soldereel user) {
         return service.createSoldeReelJournee(user);
     }
     
     @PutMapping("/soldereels/modifier/{id}")
-    public SoldeReel updateSoldeReel( @PathVariable(value = "id") int userId, @RequestBody SoldeReel userDetails) {
+    public Soldereel updateSoldeReel( @PathVariable(value = "id") int userId, @RequestBody Soldereel userDetails) {
         return service.updateSoldeReelJournee(userId, userDetails);
     }
     @DeleteMapping("/soldereels/supprimer/{id}")

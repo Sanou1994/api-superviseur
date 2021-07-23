@@ -10,17 +10,17 @@ import com.app.metier.entities.Dates;
 import com.app.metier.entities.Majournee;
 import com.app.metier.entities.Position;
 import com.app.metier.entities.SoldeDebuterJournee;
-import com.app.metier.entities.SoldeReel;
+import com.app.metier.entities.Soldereel;
 import com.app.metier.entities.Transaction;
 import com.app.metier.entities.Utilisateur;
 import com.app.metier.entities.history;
 @Component
 public interface IService {
 	//PARTIE SOLDEREEL
-	public List<SoldeReel>getAllSoldeReels() ;
-    public SoldeReel getSoldeReelById( int userId);
-    public SoldeReel createSoldeReelJournee( SoldeReel user) ;
-    public SoldeReel updateSoldeReelJournee( int userId,  SoldeReel ad);
+	public List<Soldereel>getAllSoldeReels() ;
+    public Soldereel getSoldeReelById( int userId);
+    public Soldereel createSoldeReelJournee( Soldereel user) ;
+    public Soldereel updateSoldeReelJournee( int userId,  Soldereel ad);
     public Map<String, Boolean> deleteSoldeSoldeReel( int userId) ;
 
 	//PARTIE POSITION
